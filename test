@@ -1,1 +1,12 @@
-hello
+pipeline {
+    agent any
+    stages {
+        stage('Create testdir on remote node') {
+            steps {
+                sh '''
+                    ssh -i /var/lib/jenkins/.ssh/id_rsa -o StrictHostKeyChecking=no raj@192.168.28.129 "mkdir -p /home/raj/testdir"
+                '''
+            }
+        }
+    }
+}
